@@ -1,0 +1,9 @@
+{
+  "total_input_tokens": 75606,
+  "total_output_tokens": 7742,
+  "total_reasoning_tokens": 6720,
+  "total_cached_tokens": 36224,
+  "num_model_calls": 9,
+  "num_tool_calls": 9,
+  "num_retries": 0
+}

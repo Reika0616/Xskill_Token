@@ -1,0 +1,29 @@
+{
+  "task_id": "6870357d15624e798bfc83af",
+  "model": "gpt-5",
+  "provider": "openai",
+  "skill_id": "original",
+  "skill_path": "experiment_assets/optimizer_outputs/finance_tstar/S1_v1.md",
+  "accuracy_score": 1.0,
+  "trajectory_score": 1.0,
+  "final_answer": "$913.34",
+  "usage": {
+    "input_tokens": 80799,
+    "output_tokens": 7982,
+    "reasoning_tokens": 6144,
+    "cached_tokens": 39040
+  },
+  "behavior": {
+    "model_calls": 9,
+    "tool_calls": 8,
+    "retries": 0
+  },
+  "artifacts": {
+    "trajectory": "outputs/tstar_S1_v1_claude_extra3/6870357d15624e798bfc83af/rollout_0/traj.jsonl",
+    "system_prompt": "outputs/tstar_S1_v1_claude_extra3/6870357d15624e798bfc83af/rollout_0/injected_system_prompt.txt",
+    "api_usage": "outputs/tstar_S1_v1_claude_extra3/6870357d15624e798bfc83af/rollout_0/api_usage.jsonl",
+    "cost_summary": "outputs/tstar_S1_v1_claude_extra3/6870357d15624e798bfc83af/rollout_0/cost_summary.json"
+  },
+  "generated_at": "2026-09-01T21:40:33",
+  "turns": 9
+}

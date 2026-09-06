@@ -1,0 +1,29 @@
+{
+  "task_id": "6870357d15624e798bfc83af",
+  "model": "gpt-5",
+  "provider": "openai",
+  "skill_id": "original",
+  "skill_path": "experiment_assets/skills/finance/S0_initial.md",
+  "accuracy_score": 1.0,
+  "trajectory_score": 1.0,
+  "final_answer": "From the invoice (tax incl.):\n- Frame: $149.00\n- Lenses: 2 × $476.40 = $952.80\n- Total: $1,101.80\n\nInsurance pays:\n- 23% of lenses = 0.23 × 952.80 = $219.144 ≈ $219.14\n- 5.8% of frame = 0.058 × 149.00 = $8.642 ≈ $8.64\nTotal insurance ≈ $227.78 (exact sum before rounding = $227.786)\n\nYour amount to finance ≈ $1,101.80 − $227.786 = $874.014 → $874.01\nWith a 4.5% loan: $874.01 × 1.045 ≈ $913.34\n\nFinal amount you’ll pay for the glasses (including loan interest): about $913.34.",
+  "usage": {
+    "input_tokens": 33158,
+    "output_tokens": 4991,
+    "reasoning_tokens": 3968,
+    "cached_tokens": 10240
+  },
+  "behavior": {
+    "model_calls": 5,
+    "tool_calls": 4,
+    "retries": 0
+  },
+  "artifacts": {
+    "trajectory": "outputs/tstar_S0_gpt5_extra3/6870357d15624e798bfc83af/rollout_1/traj.jsonl",
+    "system_prompt": "outputs/tstar_S0_gpt5_extra3/6870357d15624e798bfc83af/rollout_1/injected_system_prompt.txt",
+    "api_usage": "outputs/tstar_S0_gpt5_extra3/6870357d15624e798bfc83af/rollout_1/api_usage.jsonl",
+    "cost_summary": "outputs/tstar_S0_gpt5_extra3/6870357d15624e798bfc83af/rollout_1/cost_summary.json"
+  },
+  "generated_at": "2026-09-01T21:13:41",
+  "turns": 5
+}

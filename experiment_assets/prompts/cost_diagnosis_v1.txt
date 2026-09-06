@@ -1,0 +1,128 @@
+You are analyzing multiple independent executions of the SAME task under the SAME baseline Skill and the SAME executor model.
+
+Your goal is NOT to rewrite the Skill yet.
+
+Your goal is to identify evidence-supported, Skill-addressable causes of execution-cost variation while preserving task correctness.
+
+All provided trajectories are independent executions produced under the same:
+- task
+- baseline Skill
+- executor model
+- sampling configuration
+
+The trajectories provided here should be treated as semantically correct executions unless explicitly stated otherwise.
+
+You will receive:
+1. The baseline Skill S0.
+2. Three complete execution trajectories for the same task.
+3. Per-trajectory execution metadata, including token usage, model-call count, tool-call count, retries, and final answer.
+
+IMPORTANT PRINCIPLES
+
+A. Compare trajectories ONLY within this executor.
+The token counts in this input are directly comparable because all trajectories come from the same model/provider.
+
+B. Do not infer optimization advice from general knowledge.
+Every claimed costly behavior must be supported by a concrete contrast between the provided trajectories.
+
+C. Do not treat every trajectory difference as a Skill problem.
+Differences may arise from stochastic model behavior, perception uncertainty, or task difficulty.
+
+D. A behavior is Skill-addressable only if you can identify a specific instruction, omission, ambiguity, ordering rule, or stopping rule in S0 that plausibly permits or encourages that behavior.
+
+E. Preserve correctness.
+Do not recommend removing a behavior merely because it is costly. Lower-cost correct trajectories must provide evidence that the behavior can safely be reduced, bounded, reordered, consolidated, or omitted.
+
+F. Do NOT propose generic efficiency advice such as:
+- use fewer tokens
+- minimize tool calls
+- be concise
+- work efficiently
+- avoid unnecessary reasoning
+- avoid redundant steps
+- avoid unnecessary verification
+
+Any proposed change must instead describe a concrete operational behavior that could be encoded in a Skill without mentioning token cost.
+
+G. Do not rewrite S0 in this stage.
+Only produce evidence-supported hypotheses.
+
+ANALYSIS PROCEDURE
+
+Step 1 — Reconstruct each execution strategy.
+For each trajectory identify:
+- major reasoning stages
+- tool sequence
+- information acquisition
+- verification behavior
+- repeated reads or observations
+- repeated calculations
+- stopping behavior
+- recovery or retry behavior
+
+Step 2 — Compare lower-cost and higher-cost correct executions.
+Identify concrete behavioral differences that accompany additional execution cost.
+
+Step 3 — Classify observed behaviors as:
+- clearly necessary
+- potentially avoidable
+- uncertain / insufficient evidence
+
+Step 4 — Ground candidate issues in S0.
+For every potentially avoidable behavior, identify the exact Skill instruction or missing constraint that may plausibly permit it.
+
+If no plausible Skill anchor exists, mark the behavior as NOT Skill-addressable and do not propose a Skill modification for it.
+
+Step 5 — Produce conservative Skill-edit hypotheses.
+Each hypothesis must specify a concrete behavioral policy change, not an optimization objective.
+
+OUTPUT FORMAT
+
+## 1. Trajectory Comparison
+
+For each trajectory report:
+- outcome
+- token cost
+- model calls
+- tool calls
+- concise reconstruction of the execution strategy
+
+## 2. Evidence-Supported Behavioral Contrasts
+
+For each contrast report:
+- behavior
+- evidence from lower-cost trajectory/trajectories
+- evidence from higher-cost trajectory/trajectories
+- relationship to execution cost
+- correctness implications
+- confidence: high / medium / low
+
+## 3. Skill Grounding
+
+For each candidate issue report:
+- observed behavior
+- exact S0 anchor
+- why this instruction or omission may permit the behavior
+- Skill-addressable: YES / NO
+- plausible alternative explanation
+
+## 4. Candidate Skill-Edit Hypotheses
+
+Provide AT MOST THREE hypotheses.
+
+For each hypothesis report:
+- Hypothesis ID
+- trajectory evidence
+- S0 anchor
+- proposed behavioral policy
+- expected behavioral effect
+- correctness risk
+- confidence
+
+The proposed behavioral policy must be written without mentioning tokens, cost, efficiency, or tool-count reduction.
+
+## 5. Rejected / Unsupported Ideas
+
+Explicitly list tempting optimization ideas that should NOT be used because the supplied trajectories do not provide enough evidence.
+
+Do NOT rewrite S0.

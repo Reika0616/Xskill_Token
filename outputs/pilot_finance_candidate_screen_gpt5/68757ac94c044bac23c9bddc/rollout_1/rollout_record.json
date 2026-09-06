@@ -1,0 +1,29 @@
+{
+  "task_id": "68757ac94c044bac23c9bddc",
+  "model": "gpt-5",
+  "provider": "openai",
+  "skill_id": "original",
+  "skill_path": "experiment_assets/skills/finance/S0_initial.md",
+  "accuracy_score": 0.0,
+  "trajectory_score": 0.0,
+  "final_answer": "- Bottom-right quarter: The blue “coffee” series shows the strongest growth there, rising noticeably from a low level.\n\n- Left half analysis: Coffee (blue) and oil (green) move in opposite directions. As coffee’s export share declines, oil’s share increases; they even cross, indicating an inverse relationship where oil overtakes coffee during that period.",
+  "usage": {
+    "input_tokens": 17114,
+    "output_tokens": 2527,
+    "reasoning_tokens": 2048,
+    "cached_tokens": 8192
+  },
+  "behavior": {
+    "model_calls": 3,
+    "tool_calls": 2,
+    "retries": 0
+  },
+  "artifacts": {
+    "trajectory": "outputs/pilot_finance_candidate_screen_gpt5/68757ac94c044bac23c9bddc/rollout_1/traj.jsonl",
+    "system_prompt": "outputs/pilot_finance_candidate_screen_gpt5/68757ac94c044bac23c9bddc/rollout_1/injected_system_prompt.txt",
+    "api_usage": "outputs/pilot_finance_candidate_screen_gpt5/68757ac94c044bac23c9bddc/rollout_1/api_usage.jsonl",
+    "cost_summary": "outputs/pilot_finance_candidate_screen_gpt5/68757ac94c044bac23c9bddc/rollout_1/cost_summary.json"
+  },
+  "generated_at": "2026-09-01T02:48:01",
+  "turns": 3
+}

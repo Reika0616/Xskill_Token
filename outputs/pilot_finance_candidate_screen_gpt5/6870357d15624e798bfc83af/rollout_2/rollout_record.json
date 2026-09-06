@@ -1,0 +1,29 @@
+{
+  "task_id": "6870357d15624e798bfc83af",
+  "model": "gpt-5",
+  "provider": "openai",
+  "skill_id": "original",
+  "skill_path": "experiment_assets/skills/finance/S0_initial.md",
+  "accuracy_score": 1.0,
+  "trajectory_score": 1.0,
+  "final_answer": "About $913.34 in total (principal $874.01 + interest $39.33). Small 1–2 cent differences may occur depending on rounding by the insurer/loan.",
+  "usage": {
+    "input_tokens": 64000,
+    "output_tokens": 6112,
+    "reasoning_tokens": 4864,
+    "cached_tokens": 38656
+  },
+  "behavior": {
+    "model_calls": 8,
+    "tool_calls": 7,
+    "retries": 0
+  },
+  "artifacts": {
+    "trajectory": "outputs/pilot_finance_candidate_screen_gpt5/6870357d15624e798bfc83af/rollout_2/traj.jsonl",
+    "system_prompt": "outputs/pilot_finance_candidate_screen_gpt5/6870357d15624e798bfc83af/rollout_2/injected_system_prompt.txt",
+    "api_usage": "outputs/pilot_finance_candidate_screen_gpt5/6870357d15624e798bfc83af/rollout_2/api_usage.jsonl",
+    "cost_summary": "outputs/pilot_finance_candidate_screen_gpt5/6870357d15624e798bfc83af/rollout_2/cost_summary.json"
+  },
+  "generated_at": "2026-09-01T03:21:28",
+  "turns": 8
+}

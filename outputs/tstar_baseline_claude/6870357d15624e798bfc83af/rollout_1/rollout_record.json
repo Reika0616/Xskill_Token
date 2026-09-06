@@ -1,0 +1,29 @@
+{
+  "task_id": "6870357d15624e798bfc83af",
+  "model": "gpt-5",
+  "provider": "openai",
+  "skill_id": "original",
+  "skill_path": "experiment_assets/skills/finance/S0_initial.md",
+  "accuracy_score": 1.0,
+  "trajectory_score": 1.0,
+  "final_answer": "You will finally pay 913.34 (same currency as the invoice). The insurer covers 227.79, you finance 874.01, and the loan interest adds 39.33.",
+  "usage": {
+    "input_tokens": 47071,
+    "output_tokens": 5096,
+    "reasoning_tokens": 3712,
+    "cached_tokens": 26112
+  },
+  "behavior": {
+    "model_calls": 6,
+    "tool_calls": 5,
+    "retries": 0
+  },
+  "artifacts": {
+    "trajectory": "outputs/tstar_baseline_claude/6870357d15624e798bfc83af/rollout_1/traj.jsonl",
+    "system_prompt": "outputs/tstar_baseline_claude/6870357d15624e798bfc83af/rollout_1/injected_system_prompt.txt",
+    "api_usage": "outputs/tstar_baseline_claude/6870357d15624e798bfc83af/rollout_1/api_usage.jsonl",
+    "cost_summary": "outputs/tstar_baseline_claude/6870357d15624e798bfc83af/rollout_1/cost_summary.json"
+  },
+  "generated_at": "2026-09-01T04:01:46",
+  "turns": 6
+}

@@ -1,0 +1,29 @@
+{
+  "task_id": "6870357d15624e798bfc83af",
+  "model": "gpt-5",
+  "provider": "openai",
+  "skill_id": "original",
+  "skill_path": "experiment_assets/skills/finance/S0_initial.md",
+  "accuracy_score": 0.0,
+  "trajectory_score": 0.0,
+  "final_answer": "Values from the invoice (tax included):\n- Frame: $149.00\n- Lenses: $476.40 + $476.40 = $952.80\n- Total: $1,101.80\n\nInsurance pays:\n- Lenses: 23% × $952.80 = $219.14\n- Frame: 5.8% × $149.00 = $8.64\n- Total insurance = $227.79 (rounded)\n\nAmount you must finance:\n$1,101.80 − $227.79 = $874.01\n\nLoan cost at 4.5%:\nInterest = 4.5% × $874.01 = $39.33\n\nFinal amount you will pay:\n$874.01 + $39.33 = $913.34\n\nAnswer: You will finally pay about $913.34 for your new glasses (including the loan interest).",
+  "usage": {
+    "input_tokens": 46317,
+    "output_tokens": 5167,
+    "reasoning_tokens": 4032,
+    "cached_tokens": 25856
+  },
+  "behavior": {
+    "model_calls": 6,
+    "tool_calls": 5,
+    "retries": 0
+  },
+  "artifacts": {
+    "trajectory": "outputs/pilot_finance_candidate_screen_gpt5/6870357d15624e798bfc83af/rollout_0/traj.jsonl",
+    "system_prompt": "outputs/pilot_finance_candidate_screen_gpt5/6870357d15624e798bfc83af/rollout_0/injected_system_prompt.txt",
+    "api_usage": "outputs/pilot_finance_candidate_screen_gpt5/6870357d15624e798bfc83af/rollout_0/api_usage.jsonl",
+    "cost_summary": "outputs/pilot_finance_candidate_screen_gpt5/6870357d15624e798bfc83af/rollout_0/cost_summary.json"
+  },
+  "generated_at": "2026-09-01T03:14:35",
+  "turns": 6
+}

@@ -1,0 +1,718 @@
+========== INSTRUCTIONS ==========
+
+You are constructing an INITIAL category-specific Skill for a multimodal
+tool-using agent on VisualToolBench.
+
+This Skill will serve as a neutral baseline for later experiments.
+
+You are given representative tasks from one VisualToolBench category,
+together with their golden answers.
+
+Your goal is NOT to memorize, reproduce, or solve these particular
+examples.
+
+Instead, infer reusable procedural guidance and task-solving patterns
+that would help an agent solve NEW unseen tasks from the same category.
+
+The execution environment may provide these tools:
+
+- zoom:
+  Inspect or enlarge relevant regions of an image.
+
+- code_interpreter:
+  Perform computation, numerical reasoning, programmatic image analysis,
+  or other analysis better handled with code.
+
+- web_search:
+  Search for external information on the web.
+
+- visit:
+  Open and inspect web pages or search results.
+
+- image_search:
+  Search for external visual references when useful.
+
+
+Construct ONE reusable Markdown Skill document.
+
+
+The Skill should provide practical guidance for:
+
+1. understanding the task and identifying the evidence required;
+2. inspecting and localizing relevant visual information;
+3. deciding when different tools are appropriate;
+4. extracting textual, numerical, spatial, or semantic information;
+5. performing computation when needed;
+6. retrieving external information when needed;
+7. combining visual, computational, and external evidence;
+8. validating important intermediate and final conclusions;
+9. producing the requested final answer.
+
+
+IMPORTANT CONSTRAINTS:
+
+- Do NOT mention specific examples supplied below.
+
+- Do NOT reproduce example-specific answers, companies, people,
+  numbers, locations, dates, or other instance-specific details.
+
+- The Skill should generalize to unseen tasks from the same category.
+
+- Do NOT assume every task requires every tool.
+
+- Do NOT prescribe one rigid tool sequence for all tasks.
+
+- Tool use should be conditional on the task and available evidence.
+
+- Do NOT discuss this research experiment.
+
+- Do NOT optimize the Skill for token usage, execution cost, latency,
+  or number of tool calls.
+
+- Do NOT instruct the agent to minimize reasoning or verification.
+
+- The objective of this INITIAL Skill is normal task performance,
+  correctness, and reliability.
+
+Prefer concrete, actionable procedural rules over long explanatory prose.
+
+The document should be detailed enough to guide agent behavior, but
+should not become an encyclopedic description of every possible task.
+
+
+A suitable structure is:
+
+# <Skill Name>
+
+## Description
+
+## When to Use
+
+## Strategy Overview
+
+## Workflow
+
+### 1. Understand the Task and Evidence Requirements
+
+### 2. Inspect and Localize Visual Evidence
+
+### 3. Select and Use Tools
+
+### 4. Integrate Evidence
+
+### 5. Validate the Result
+
+### 6. Produce the Final Answer
+
+## Tool Guidance
+
+### zoom
+
+### code_interpreter
+
+### web_search and visit
+
+### image_search
+
+## Common Failure Modes / Watch Outs
+
+## Output Principles
+
+
+Return ONLY the final Markdown Skill document.
+
+Do not wrap it inside a Markdown code fence.
+
+========== INPUT ==========
+
+The target VisualToolBench category is:
+
+finance
+
+Below are representative tasks from this category.
+
+Use these examples only to infer reusable task-solving procedures.
+
+================ REPRESENTATIVE TASKS ================
+
+============================================================
+EXAMPLE 1
+============================================================
+
+Category:
+finance
+
+Task:
+Determine in which month does the chart display the largest candlestick body, and what was the closing price at that time. Also, how much did the price change between that point and the highest visible point in the chart?
+
+Golden Answer:
+The largest candlestick body appears in August 2024, the fourth green candle from the left. Its closing price is approximately 62,000 USD. From that point, the price climbed to a peak of around 112,000 USD, a gain of about 50,000 USD.
+
+============================================================
+EXAMPLE 2
+============================================================
+
+Category:
+finance
+
+Task:
+Based on the provided financial chart, identify the time on the x-axis that corresponds to the highest trading volume, as indicated by the histogram at the bottom of the screen. Then, find the exact price level at that specific moment and state the two corresponding 'COB' values listed for that price on the right-hand side.
+
+Golden Answer:
+Based on the financial chart, the highest trading volume shown in the histogram at the bottom of the screen occurs at the 17:25 mark. Cross-referencing this time with the main chart shows the price level at that moment was 177.51. The two corresponding 'COB' values for this price level, as listed on the right-hand side, are 94,76 and 75814.
+
+============================================================
+EXAMPLE 3
+============================================================
+
+Category:
+finance
+
+Task:
+In the given image, there are two dine-in receipts. What's the total amount paid for all the food without VAT, and excluding the purchase of Coke?
+
+Golden Answer:
+There are two receipts, and the total bill and VAT are given as:
+
+Receipt 1:
+Total bill = £9.15
+VAT = £1.52
+
+Receipt 2:
+Total bill = £28.95
+VAT = £4.83
+
+For Receipt 1: 
+Food expense without VAT = £9.15 - £1.52 = £7.63
+
+For Receipt 2:
+We need to extract the vat from receipt 2, excluding the coke.
+
+The total cost in receipt 2 is £28.95, and the price for Coke is £2.95
+Food expense without Coke is = £28.95 - £2.95 = £26.00
+
+20% VAT is included in this; therefore, we need to get the value without VAT.
+
+Let P = price without VAT
+(P)*(1.20) = £26
+P = 26/1.20 = £21.6666667 or approximately £21.67
+
+Food expense without VAT = £21.67
+
+Therefore, the amount paid for food without VAT and Coke = £21.67 +£7.63= £29.30
+
+============================================================
+EXAMPLE 4
+============================================================
+
+Category:
+finance
+
+Task:
+My financial advisor provided me with a spreadsheet of my ETF's performance. How much did my total returns increase from the start of 2025 to the most recent data shown on the spreadsheet? Of the ETFs I'm tracking, which one has the highest expense ratio?
+
+Golden Answer:
+For the year 2025, it appears your total returns (cumulative returns) reported in January 2025 were 49,581.90, and the most recent data for returns is reported as 63,087.72 for August 2025. Therefore, your total returns increased by 13,505.82 for this period.
+
+You are tracking several investment options on the right side of your screen. Of these options, the following are ETFs with their expense ratios listed:
+- Fidelity MSCI Information Technology Index ETF (FTEC) - 0.08%
+- Vanguard ESG U.S. Stock ETF (ESGV) - 0.09%
+- Vanguard Total Stock Market ETF (VTI) - 0.03%
+- Vanguard S&P 500 EFT (VOO) - 0.03%
+
+Therefore, ESGV has the highest expense ratio at 0.09%.
+
+============================================================
+EXAMPLE 5
+============================================================
+
+Category:
+finance
+
+Task:
+Look at the image showing call and stock prices for Alphabet. I'm thinking of buying 10 of the call contracts showing the greatest percent change. How much will it cost me to buy the contracts? Also, how much percent-wise is Alphabet down after hours (at the later time shown)?
+
+Golden Answer:
+The Ask price for the contract with the greatest percent change (22 %) is $65.50. Each contract represents 100 shares that each have this price. You wanted to buy 10 of these contracts, so to get our cost, we calculate: 
+
+$65.50 per share x 100 shares x 10 contracts = $65,500
+
+Your cost to buy 10 contracts is $65,500. To address your other question, I can see that Alphabet is down -0.05% after hours.
+
+============================================================
+EXAMPLE 6
+============================================================
+
+Category:
+finance
+
+Task:
+Calculate the combined annual gross profit of the previous and current year for each department, excluding the Curtain Department, and rank the departments from highest to lowest based on their combined profits.
+
+Golden Answer:
+The annual gross profits for the Headquarter, Plastic, Chemical Fiber, and Curtain departments are represented in a histogram on the middle and bottom right of the image.
+
+Calculations of the combined annual gross profits for the Headquarter, Plastic, and Chemical Fiber departments:
+
+* For the Headquarter Department, the previous year's annual gross profit is 2 million RMB (200 × 10k RMB), and the current year's annual gross profit is 3 million RMB (300 × 10k RMB). The combined value is thus 2 + 3 = 5 million RMB.
+
+* For the Plastic Department, the previous year's annual gross profit is 2 million RMB (200 × 10k RMB), and the current year's annual gross profit is 2 million RMB (200 × 10k RMB). The combined value is thus 2 + 2 = 4 million RMB.
+
+* For the Chemical Fiber Department, the previous year's annual gross profit is 1 million RMB (100 × 10k RMB), and the current year's annual gross profit is 2 million RMB (200 × 10k RMB). The combined value is thus 1 + 2 = 3 million RMB.
+
+Since 5 > 4 > 3, the descending ranking of the three departments based on their combined annual gross profits for the previous and current years is:
+
+* Headquarter
+* Plastic
+* Chemical Fiber
+
+============================================================
+EXAMPLE 7
+============================================================
+
+Category:
+finance
+
+Task:
+From the image I just attached, there are Bollinger Bands on the chart. Could you tell me if, according to this indicator, there is an overbought or oversold condition at 6:05 PM and at 6:40 PM? In addition, I’m interested in knowing in which year the company responsible for this market started trading on the stock exchange.
+
+Golden Answer:
+At 6:05 PM, the candlestick is below the lower Bollinger Band, indicating an oversold condition, while at 6:40 PM, the candlestick is above the upper Bollinger Band, indicating an overbought condition. The company behind the market is Tesla (TSLA), which started trading on the stock exchange in 2010.
+
+============================================================
+EXAMPLE 8
+============================================================
+
+Category:
+finance
+
+Task:
+Calculate what percentage of the revenue without professional services is represented by the two contributors with the highest percentage growth rates. Please show the two contributors identified with their growth rates and revenue, the total relevant revenue, and the final percentage calculation.
+
+Golden Answer:
+The two contributors with the highest percentage growth rates are Platform & Other (53% Y/Y) and Marketing & Commerce (17% Y/Y), with revenues of $1.5B and $1.1B respectively. The total revenue from Subscription and Support (excluding professional services) is $7.1B.
+
+Therefore, these two contributors represent approximately 36.62% of the revenue without professional services.
+
+Calculation: (($1.5B + $1.1B) / $7.1B) * 100 ≈ 36.62%
+
+============================================================
+EXAMPLE 9
+============================================================
+
+Category:
+finance
+
+Task:
+Based on the dashed line in the price chart shown, what was the highest price that the U.S. Dollar reached during the month of May? Then, research what the GBP peaked at against the EUR in this same month, and did this peak occur at the same point of the month, or earlier or later?
+
+Golden Answer:
+Based on the price chart for 2025, the highest price in Euros (EUR) that the U.S. Dollar reached during the month of May was €0.9036, as indicated by the dashed horizontal line marking the peak. This peak occurred approximately in the second week of May.
+
+In May 2025, the highest price the Great British Pound (GBP) reached against the Euro in May 2025 was €1.1955 on 29 May 2025. This peak does not correlate with the peak for the USD against the Euro as it occurred later in the month.
+
+============================================================
+EXAMPLE 10
+============================================================
+
+Category:
+finance
+
+Task:
+I'm comparing a few of the stocks I own on the chart shown for 2025. What date did the performance of GM fell below that of Alphabet Inc. since June? Also, which of the stocks I'm following shows the highest latest price? Don't mention the prices of the stock.
+
+Golden Answer:
+The legend in the upper left area indicates the line on the chart for GM is pink and for GOOG (Alphabet Inc.) it is purple. Following the pink and purple lines past June it can be seen that GM sharply dips and crosses the pink line around July 22. Since the chart is for 2025 the approximate date that the performance of GM fell below that of Alphabet Inc. since June is July 22, 2025.
+
+The stocks being followed are indicated by the "My Watchlist", and the highest latest price are under the "Last Price Column". The stock with the highest value is UNP.
+
+============================================================
+EXAMPLE 11
+============================================================
+
+Category:
+finance
+
+Task:
+How many orange lines acting as a resistance in its span are drawn? How many orange lines acting as a support in its span are drawn? Is the current price of the stock shown in the image at a key level support or key level resistance?
+
+Golden Answer:
+There are 2 orange lines acting as a resistance in its span.
+
+There are 2 orange lines acting as a support in its span.
+
+The current price of 60.28 is currently at a key level resistance.
+
+============================================================
+EXAMPLE 12
+============================================================
+
+Category:
+finance
+
+Task:
+Which 3 items from Patheros Labs have the greatest inventory values? Of these 3, which is the most expensive per unit?
+
+Golden Answer:
+The 3 items from Patheros Labs having the greatest inventory values are Item 2 ($12,276), Item 11 ($10,384), and Item 10 ($8,750).
+
+The unit price of Item 2 is $93.00, the unit price of Item 11 is $59.00, and the unit price of Item 10 is $50.00. The most expensive item per unit among the three is Item 2.
+
+============================================================
+EXAMPLE 13
+============================================================
+
+Category:
+finance
+
+Task:
+I'm nervous about my finances. Tell me what items I've purchased that cost over $25, and when and where I purchased them. And tell me how much the price of fruit changed between the purchase dates.
+
+Golden Answer:
+Here are the three items you've purchased that cost more than $25:
+
+Workspace Soho 12 Cube Cubby White
+$199.00
+The Warehouse
+Rotorua, Cnr Anohau & Fenton Streets Rotorua
+20 November 2024
+
+Healtheries Womens Multi 100S
+$31.99
+New World Ohakune
+12 Goldfinch Street
+23 July 2025
+
+Macs Slim Hazy IPA 330ML 12PK Can
+$29.99
+New World Ohakune
+12 Goldfinch Street
+23 July 2025
+
+Now let's compare your fruit purchases.
+
+You bought bananas on 19 June 2025 and then again on 23 July 2025 from the same store.
+On 19 June the price for bananas was $3.69/kg and you bought $1.27 of bananas.
+On 23 July the price for bananas was $3.69/kg and you bought $1.05 of bananas.
+The price of bananas did not change between these purchase dates but your bananas cost slightly less as you bought less (0.285kg vs 0.345kg).
+
+You also bought mandarins on 19 June 2025 and again on 23 July from the same store.
+On 19 June the price for mandarins was $4.99 and you bought $5.39 of mandarins
+On 23 July the price for mandarins was $5.99 and you bought $12.01 of mandarins.
+The price of mandarins increased between these purchase dates, and you also bought roughly double the amount of mandarins (1.080kg vs 2.005kg), which explains how you spent considerably more on mandarins at the later shop.
+
+Can I help with any other finance questions?
+
+============================================================
+EXAMPLE 14
+============================================================
+
+Category:
+finance
+
+Task:
+I just returned from a vacation to Africa with my wife. Even though I enjoyed the trip, I am a bit apprehensive about the cost of the whole trip. Based on the attached file, tell me what percentage of the total trip cost went to transportation and food, respectively. Also, what is the cost per traveler for the trip and the average cost per night? Please let me know by how much I overspent for this trip based on my budget.
+
+Golden Answer:
+First, the total expenses spent were
+Transportation: Flight $1900 + Taxi and Bus $500+ Driving $28+Parking $30 = $2458
+Lodging:	$550
+Food: Breakfast & Lunch $150 + Dinner $200+ Snacks $100= $450
+Entertainment: Beach $60 + Art gallery $40 = $100
+Other: Tour guild $45 + Souvenirs and Gifts $200 + Tips $50 =	$295
+Total expenses = $3,853.
+
+The percentages on transportation and food are $2,458/$3,853=63.79% and $450/$3,853=11.68%, respectively.
+
+Total cost per traveler (me and my wife) is $3853/2 = $1,926.50. 
+The average cost per night (5 nights) is $3853/5 = $770.60. 
+
+The total budget for the trip is is $3,285.
+
+Hence, the amount overspent on the trip is $3,853 - $3285 = $568.
+
+============================================================
+EXAMPLE 15
+============================================================
+
+Category:
+finance
+
+Task:
+Based on the chart, determine which asset had grown the most (and shrunk the most) in value by September 2012. Determine whether different assets fit this description by November 2013.
+
+Golden Answer:
+According to the data in the chart, it seems that Gold was the asset that had grown the most in value and JPY was the asset that had shrunk the most in value by September 2012. It seems that by November 2013, the asset that had (overall) grown the most in value had changed to BTC and the asset that had (overall) shrunk the most in value had changed to EUR.
+
+============================================================
+EXAMPLE 16
+============================================================
+
+Category:
+finance
+
+Task:
+What are the individual prices of the items that are non-taxable? Suppose that all items were taxed at a rate of 10%, how much will the bill increase if all originally taxable items' prices in the receipt were already tax-inclusive? Disregard the currency of "PESO" and use USD for the currency. Do not mention any of the items.
+
+Golden Answer:
+The individual prices of the items that are non-taxable are: $34.50, $862.78, $371.95, and $92.50.
+
+The total cost of the non-taxable items is expressed as: $34.50 + $862.78 + $371.95 + $92.50 = $1,361.73.
+
+If a 10% tax was imposed in all items, and considering that the original taxable items' prices were already tax-inclusive, then the total bill will increase only by the total tax imposed on the non-taxable items. The tax imposed on the non-taxable items is expressed as: $1,361.73 * 10% = $136.173 or approximately $136.17.
+
+The total bill will increase by $136.173 or approximately $136.17 if all items were taxed at a rate of 10% and if all originally taxable items' prices in the receipt were already tax-inclusive.
+
+============================================================
+EXAMPLE 17
+============================================================
+
+Category:
+finance
+
+Task:
+To the nearest hour, when was the earliest time during this day at which the stock price exceeded the end of day price from the previous day? Also, what is the difference between the previous day's closing price and todays?
+
+Golden Answer:
+The stock first exceeds the previous day's final price at 10:00am. The difference between today's and yesterday's final price is 0.372.
+
+============================================================
+EXAMPLE 18
+============================================================
+
+Category:
+finance
+
+Task:
+How much is the total discounts applied and what percentage all-in-all was discounted from the total billing at the *Mang Inasal* restaurant considering the discounts and VAT exemptions provided? What percentage was the PWD discount based on the VAT-exempt values presented in the bill? Round to the nearest whole percentage. Also, assume all values are in Philippine Peso.
+
+Golden Answer:
+The discounts applied were ₱33.54 (Less VAT), and ₱55.89 (Less PWD DISC). The total discount is expressed as: ₱33.54 + ₱55.89 = ₱89.43.
+
+The total bill without the discounts is ₱313.00, which implies that the percent all-in-all that was discounted from the total billing is (₱89.43)/(₱313.00) * 100% ≈ 29%.
+
+The PWD discount is ₱55.89 on the VAT-Exempt Sales of ₱279.46, which implies that the percent of the PWD discount is (₱55.89)/(₱279.46) * 100% ≈ 20%.
+
+============================================================
+EXAMPLE 19
+============================================================
+
+Category:
+finance
+
+Task:
+In the image, identify the current value of the index represented by a Union Jack flag. Then, find the detailed chart for that same index and state its last buy price. Finally, of all the indices and stocks shown in the watchlists, which one had the smallest and largest percentage change based on the magnitude of the change?
+
+Golden Answer:
+The current value of the index represented by a Union Jack flag (UKX) is 9,124.61. The last BUY price for this index on its detailed chart is the same as its current value.
+
+After reviewing all assets in the watchlists, the one with the smallest percentage change is SPX (-0.06%), and the one with the largest percentage change is VIX (+4.82%).
+
+============================================================
+EXAMPLE 20
+============================================================
+
+Category:
+finance
+
+Task:
+For this chart, I need your help to define the result of my earnings, as I am practicing the use of the head-and-shoulders pattern. What I want is: identify the month in which each event occurs (shoulder, head, shoulder) and then, considering the nearest multiple of 4,000 to each event, carry out the following transactions without including additional fees: assuming I start with 1.5 bitcoin, during the first shoulder invest 20,000 USD, at the head sell 60%, and at the second shoulder sell the remaining 40%. I want you to give me the final amount in USD obtained after these transactions.
+
+Golden Answer:
+To identify the head-and-shoulders pattern, we look for three consecutive peaks: a left shoulder, a higher central peak (the head), and a right shoulder roughly equal in height to the first. In this case, the pattern appears between September and December 2021. At the beginning of September, we see the first shoulder with the nearest multiple of 4,000 at 52,000 USD. The head reaches about 68,000 USD in mid-November, and finally the second shoulder forms at the end of December, again around 52,000 USD.
+
+For the calculations, we start with 1.5 BTC and add 20,000 USD at a price of 52,000 USD, following the nearest-multiple rule.
+- 20,000 ÷ 52,000 ≈ 0.3846 BTC
+Total BTC after purchase = 1.5 + 0.3846 ≈ 1.8846 BTC
+At the head (68,000 USD), we sell 60% of the holdings:
+- 1.8846 × 0.6 = 1.1308 BTC
+-1.1308 × 68,000 ≈ 76,923 USD
+- Remaining BTC = 1.8846 − 1.1308 = 0.7538 BTC
+At the second shoulder (52,000 USD), we sell the rest:
+-0.7538 × 52,000 ≈ 39,538 USD
+
+Final total = 76,923 + 39,538 ≈ 116,461 USD
+
+============================================================
+EXAMPLE 21
+============================================================
+
+Category:
+finance
+
+Task:
+Which material has the least mass value from the Test Building 1 project? What is its mass value (tonnes)? My friend Kelvin lists some of the items that I will need for the test building 2 project. What's the greatest extended price that Kelvin listed, and from which supplier is Kelvin sourcing it?
+
+Golden Answer:
+The material that has the least mass value from the Test Building 1 project is "3 mil Polyethylene" with the mass value of 0.0077 tonnes.
+
+The greatest extended price that Kelvin listed is $5,814.27 from the supplier named "MR.RESISTOR".
+
+============================================================
+EXAMPLE 22
+============================================================
+
+Category:
+finance
+
+Task:
+I'm planning a trip from the USA to India, but I know little about this country. I've found this image for the currency exchange when looking for flights. Check the top part and tell me if this shows the currency I'll need in India. Now, I plan to travel next December, the airline offers me the same fixed price in INR for two months. Use the plot below and tell me, if the exchange rate keeps the same behavior, is it better for me to buy the tickets now or next month?
+
+Golden Answer:
+The display shows INR text along with the USA and the Indian flag. Then the displayed currency is the Indian Rupee and yes, this shows the currency you'll need in India. 
+Based on the chart's trend analysis of the exchange rate, the value for the INR has been increasing over the last four months, showing an upward trajectory from lower rates to the current rate. If this trend continues into December, the USD will likely buy more INR, meaning it would be better to purchase your tickets next month rather than now.
+
+============================================================
+EXAMPLE 23
+============================================================
+
+Category:
+finance
+
+Task:
+What are the current prices of SOL and BTC (both in USDT) in the image? I started my portfolio in the year 2022 and bought 14 SOL and 0.2 BTC at their lowest prices on ByBit in 2022. How much has my portfolio grown, in percentage, if I sold them at the current prices (USDT) shown in this image?
+
+Golden Answer:
+The lowest prices of SOL and BTC on ByBit in 2022 are 7.91 USDT per SOL and 15,484.30 USDT per BTC.
+
+Total Buying Price:
+14 SOL => 14 * 7.91 = 110.74 USDT
+0.2 BTC => 0.2 * 15,484.30 = 3,096.86 USDT
+TOTAL: 3,207.60 USDT
+
+From the image, the current prices of SOL and BTC from the image are 186.11 USDT per SOL and 118,686.01 USDT per BTC.
+
+Total Selling Price:
+14 SOL => 14 * 186.11 = 2,605.54 USDT
+0.2 BTC => 0.2 * 118,686.01 = 23,737.202 USDT
+TOTAL: 2,605.54 USDT + 23,737.202 USDT = 26,342.742 USDT
+
+Portfolio Growth:
+Profit => 26,342.742 USDT - 3,207.60 USDT = 23,135.142 USDT
+Percentage Growth => (23,135.142/3,207.60) * 100% = 721.26%
+
+The portfolio has grown by about 721.26%.
+
+============================================================
+EXAMPLE 24
+============================================================
+
+Category:
+finance
+
+Task:
+What is the amount of the payment to Juliette Nicols, and how many branch, debit card, and online transactions are visible in the statement?
+
+Golden Answer:
+The amount of the payment to Juliette Nicols is $94, calculated as $370.02 (start balance) − $126.02 (balance before the $800.00 deposit) = $244, then $244 − $50 (first money out) − $100 (third money out) = $94. There are 2 transactions made in a branch (14 Nov and 16 Nov- second transaction), 4 debit card transactions (16 Nov - first transaction, and 19 Nov - all 3 transactions), and 4 online transactions (13 Nov - all 4 transactions).
+
+The calculation is this: 
+370.02 -50 = 320.02
+320.02 - 100 = 220.02
+220.02 + 800 = 1020.02
+1020.02 - 926.02 = 94
+
+============================================================
+EXAMPLE 25
+============================================================
+
+Category:
+finance
+
+Task:
+According to the 'Market Watch Published Estimates' section, is the EBITDA value for the given 'Historic' date in that section consistent with the value shown in the annual EBITDA bar chart for that date? Is it higher or lower? Also, what was the Average Stock Price in the same year that the company posted its highest quarterly EBITDA?
+
+Golden Answer:
+The EBITDA value of 30,615,002 listed in the 'Historic' data table is not consistent with the value of 9,820 shown for the year 2020 in the annual EBITDA bar chart. Therefore, the EBITDA value from the 'Historic' data table is not consistent with the value in the annual bar chart; the table value is significantly higher.
+
+The highest quarterly EBITDA shown in the bottom-left chart is 3,020, which occurred in the quarter ending 30-Sep-20. The corresponding year is 2020. By cross-referencing this year with the 'Average Stock Price' chart at the top left, the stock price for 2020 is found to be 39.95.
+
+============================================================
+EXAMPLE 26
+============================================================
+
+Category:
+finance
+
+Task:
+For each stock in the image, identify the date when the stock's closing price first crossed above the $150 mark in the positive direction. What date did Alphabet Inc. have the greatest day-to-day increase in trading volume for the period shown in the image?
+
+Golden Answer:
+- Nvidia stock first crosses the $150 mark on June 25. 
+- Alphabet Inc. first passes from below to above $150 on April 8. 
+- Alphabet Inc. had the greatest volume increase from the previous day on May 7.
+
+============================================================
+EXAMPLE 27
+============================================================
+
+Category:
+finance
+
+Task:
+What are the highest values of BTC and ETH in USDT on the 1D marked candles in the image? I bought 1 BTC and 1 ETH at their peak prices in 2024. Using ByBit's data, how much, in USDT, would I profit or lose if I sold them at the highest values shown in the 1D marked candles in the image?
+
+Golden Answer:
+The highest values of BTC and ETH on the 1D marked candles in the image are 123,260.20 USDT and 2,879.00 USDT.
+
+According to ByBit's data, the peak prices of BTC and ETH in 2024 are 108,374.80 USDT and 4,108.86 USDT.
+
+The difference between the respective prices of BTC is expressed as 123,260.20 - 108,374.80 = 14,885.40. This means that you have profited 14,885.40 USDT.
+
+The difference between the respective prices of ETH is expressed as 2,879.00 - 4,108.86 = -1,229.86. This means that you have lost 1,229.86 USDT.
+
+The combination of your profit and loss can be expressed as 14,885.40 + (-1,229.86) = 13,655.54. This means that you would have profited 13,655.54 USDT if you sold them at the highest values shown in the 1D marked candles in the image.
+
+============================================================
+EXAMPLE 28
+============================================================
+
+Category:
+finance
+
+Task:
+How do the numbers for U.S. sales in Q4 of 2020 compare with international sales during the same time? Please present these figures. Also, in terms of a dollar value, how much sales were done worldwide in Q4 of 2019? What are the overall trends between Q4 2019 and Q4 2020 in the U.S. and international markets?
+
+Golden Answer:
+Based on the quarterly results shared, in Q4 of 2020, the U.S. sales were $10.5 billion, while the total International sales were $9.7 billion. Based on this information, there was a higher amount of sales in the U.S. markets than in international markets for this period.
+
+Worldwide sales in Q4 of 2019 were $18.1 billion.
+
+Comparing the sales year-over-year shows that both markets displayed an increasing trend, with the U.S. sales increasing from $9.5 billion in Q4 2019 to $10.5 billion in Q4 2020, and International sales from $8.6 billion in Q4 2019 to $9.7 billion in Q4 2020.
+
+============================================================
+EXAMPLE 29
+============================================================
+
+Category:
+finance
+
+Task:
+Based on the image, answer the following questions:
+
+1. Did the customer pay with cash? Explain your reasoning.
+2. What was the most expensive item printed on the receipt? Could you identify if it is food or beverage?
+
+Golden Answer:
+Based on the sales receipt on the left, it can be determined that the transaction was paid by card, particularly a VISA card as printed on it. Other clues include "CARD TYPE: VISA" and "CONTACTLESS ENTRY" printed on the receipt.
+
+The most expensive item is 'Caramel Macc - R' at 15.75 RM. The item description refers to caramel macchiato, which is a beverage.
+
+============================================================
+EXAMPLE 30
+============================================================
+
+Category:
+finance
+
+Task:
+What is the difference between the ending balances of the earlier month and the later month in this statement? Include the plus or minus sign to indicate if it is a positive or negative difference.
+
+Golden Answer:
+Sure, I can help you analyze the difference.
+
+The ending balance for the earlier month, June, is $106.79, and the ending balance for the month of July is $320.94. 
+
+The difference between the balances is $320.94 - $106.79, which gives a difference of +$214.15.
+
+================ END OF TASKS =========================

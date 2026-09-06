@@ -1,0 +1,29 @@
+{
+  "task_id": "6870357d15624e798bfc83af",
+  "model": "gpt-5",
+  "provider": "openai",
+  "skill_id": "original",
+  "skill_path": "experiment_assets/skills/finance/S0_initial.md",
+  "accuracy_score": 1.0,
+  "trajectory_score": 1.0,
+  "final_answer": "Values from the invoice (tax incl.):\n- Frame: $149.00\n- Lenses: $476.40 each × 2 = $952.80\n- Invoice total: $1,101.80\n\nInsurance payout:\n- 23% of lenses: 0.23 × 952.80 = $219.14\n- 5.8% of frame: 0.058 × 149.00 = $8.64\n- Total insurance = $219.14 + $8.64 = $227.79\n\nAmount you must finance:\n- $1,101.80 − $227.79 = $874.01\n\nLoan cost (4.5% all‑in):\n- Interest = 0.045 × $874.01 = $39.33\n\nFinal amount you will pay (principal + interest):\n- $874.01 + $39.33 = $913.34\n\nAnswer: You will finally pay about $913.34 for your new glasses.",
+  "usage": {
+    "input_tokens": 56096,
+    "output_tokens": 6931,
+    "reasoning_tokens": 5696,
+    "cached_tokens": 23680
+  },
+  "behavior": {
+    "model_calls": 7,
+    "tool_calls": 6,
+    "retries": 0
+  },
+  "artifacts": {
+    "trajectory": "outputs/tstar_baseline_claude/6870357d15624e798bfc83af/rollout_0/traj.jsonl",
+    "system_prompt": "outputs/tstar_baseline_claude/6870357d15624e798bfc83af/rollout_0/injected_system_prompt.txt",
+    "api_usage": "outputs/tstar_baseline_claude/6870357d15624e798bfc83af/rollout_0/api_usage.jsonl",
+    "cost_summary": "outputs/tstar_baseline_claude/6870357d15624e798bfc83af/rollout_0/cost_summary.json"
+  },
+  "generated_at": "2026-09-01T03:59:35",
+  "turns": 7
+}

@@ -1,0 +1,60 @@
+condition,run,source,semantic_ok,judge_acc,total_tokens,input_tokens,output_tokens,reasoning_tokens,cached_tokens,model_calls,tool_calls,retries,answer
+S0,1,original3,True,0.0,51484,46317,5167,4032,25856,6,5,0,"Values from the invoice (tax included):
+- Frame: $149.00
+- Lenses: $476.40 + $476.40 = $952.80
+- Total: $1,101.80
+
+Insurance pays:
+- Lenses: 23% × $952.80 = $219.14
+- Frame: 5.8% × $149.00 = $8.64
+- Total insurance = $227.79 (rounded)
+
+Amount you must finance:
+$1,101.80 − $227.79 = $874.01
+
+Loan cost at 4.5%:
+Interest = 4.5% × $874.01 = $39.33
+
+Final amount you will pay:
+$874.01 + $39.33 = $913.34
+
+Answer: You will finally pay about $913.34 for your new glasses (including the loan interest)."
+S0,2,original3,True,1.0,108822,101074,7748,5952,47232,11,10,0,$913.35
+S0,3,original3,True,1.0,70112,64000,6112,4864,38656,8,7,0,About $913.34 in total (principal $874.01 + interest $39.33). Small 1–2 cent differences may occur depending on rounding by the insurer/loan.
+S0,4,extra3,False,0.0,79452,72954,6498,4608,8704,8,8,0,Error: Reached max image limit.
+S0,5,extra3,True,1.0,38149,33158,4991,3968,10240,5,4,0,"From the invoice (tax incl.):
+- Frame: $149.00
+- Lenses: 2 × $476.40 = $952.80
+- Total: $1,101.80
+
+Insurance pays:
+- 23% of lenses = 0.23 × 952.80 = $219.144 ≈ $219.14
+- 5.8% of frame = 0.058 × 149.00 = $8.642 ≈ $8.64
+Total insurance ≈ $227.78 (exact sum before rounding = $227.786)
+
+Your amount to finance ≈ $1,101.80 − $227.786 = $874.014 → $874.01
+With a 4.5% loan: $874.01 × 1.045 ≈ $913.34
+
+Final amount you’ll pay for the glasses (including loan interest): about $913.34."
+S0,6,extra3,True,1.0,55508,49480,6028,4352,28032,7,6,0,"You will finally pay 913.34 (same currency as the invoice). 
+Breakdown: insurance pays about 227.79; you finance 874.01; loan interest adds 39.33."
+S1,1,original3,True,1.0,50261,44777,5484,3968,6656,6,5,0,$913.34
+S1,2,original3,True,1.0,54132,47643,6489,4672,11392,7,6,0,You will finally pay 913.34 (currency units).
+S1,3,original3,True,1.0,42404,35825,6579,4928,13568,5,4,0,"$913.34 (about $227.79 from insurance, $874.01 financed, $39.33 interest)"
+S1,4,extra3,True,1.0,52018,46233,5785,4224,12928,6,5,0,"You will finally pay 913.35 (currency as shown on the invoice, “dollars”), including the 4.5% loan interest. Your out-of-pocket before interest is 874.02, and the insurer contributes 227.78."
+S1,5,extra3,True,1.0,49470,44856,4614,3264,19712,6,5,0,You will finally pay 913.34 (in the invoice currency).
+S1,6,extra3,True,1.0,52324,47385,4939,3328,28800,7,6,0,"From the invoice:
+- Lenses: $476.40 each × 2 = $952.80
+- Frame: $149.00
+
+Insurance pays:
+- 23% of lenses = 0.23 × 952.80 = $219.14
+- 5.8% of frame = 0.058 × 149.00 = $8.64
+Total insurance = $227.79
+
+Your share before financing = ($952.80 + $149.00) − $227.79 = $874.01
+
+With the personal loan at 4.5%:
+$874.01 × 1.045 = $913.34
+
+Final amount you will pay: $913.34"

@@ -1,0 +1,14 @@
+[
+  {
+    "doc_id": "6870357d15624e798bfc83af",
+    "problem": "<image>\nI have got my insurance pay me a part of my new glasses. They will pay a 23% of the lenses and, as I  have chosen a different model from the ones which were broken in the accident, only a 5.8% of the frame. I will pay the rest with a personal loan which, all expenses included, will cost me an interest rate of 4.5% How much will I  finally pay for my new glasses?",
+    "images": [
+      "VisualToolBench/images/6870357d15624e798bfc83af/img_0.png"
+    ],
+    "solution": "The lenses cost $476.40 each. The insurance covers 23% of $476.40, which is $109.57. As there are 2 lenses, the total payment covered by the insurance for the lenses is $219.14.\n\nThe frame costs $149.00. The insurance covers 5.8% of $149, which is $8.64.\n\nSo, the insurance will pay $219.14 of the lenses plus $8.64 of the frame, totalling $227.78.\n\nTo find the amount that is not covered by the insurance, subtract $227.78 from the original total of $1101.80, which results in $874.02.\n\nSince the amount of $874.02 will be under a loan having 4.5% interest, the total payment that needs to be made is $874.02 plus 4.5% of $874.02, which is expressed as:\n=> 874.02 + 4.5%(874.02)\n=> 874.02 + 0.045(874.02)\n=> 874.02 + 39.33\n=> 913.35\n\nThe total payment for the new glasses that needs to be made is about $913.35.",
+    "data_source": "finance",
+    "turncase": "single-turn",
+    "num_turns": 1,
+    "eval_focus": "hybrid_tool_reasoning"
+  }
+]

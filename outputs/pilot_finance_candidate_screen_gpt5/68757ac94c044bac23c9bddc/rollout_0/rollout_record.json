@@ -1,0 +1,29 @@
+{
+  "task_id": "68757ac94c044bac23c9bddc",
+  "model": "gpt-5",
+  "provider": "openai",
+  "skill_id": "original",
+  "skill_path": "experiment_assets/skills/finance/S0_initial.md",
+  "accuracy_score": 0.0,
+  "trajectory_score": 0.0,
+  "final_answer": "Strongest growth in the bottom-right quarter: Cocoa (blue).\nLeft half relationship: Coffee’s share is fairly steady/slightly declining, while Oil’s share rises, so Oil catches up to and rivals Coffee—an inverse trend (Oil up, Coffee flat/down).",
+  "usage": {
+    "input_tokens": 15820,
+    "output_tokens": 3842,
+    "reasoning_tokens": 3328,
+    "cached_tokens": 7040
+  },
+  "behavior": {
+    "model_calls": 3,
+    "tool_calls": 2,
+    "retries": 0
+  },
+  "artifacts": {
+    "trajectory": "outputs/pilot_finance_candidate_screen_gpt5/68757ac94c044bac23c9bddc/rollout_0/traj.jsonl",
+    "system_prompt": "outputs/pilot_finance_candidate_screen_gpt5/68757ac94c044bac23c9bddc/rollout_0/injected_system_prompt.txt",
+    "api_usage": "outputs/pilot_finance_candidate_screen_gpt5/68757ac94c044bac23c9bddc/rollout_0/api_usage.jsonl",
+    "cost_summary": "outputs/pilot_finance_candidate_screen_gpt5/68757ac94c044bac23c9bddc/rollout_0/cost_summary.json"
+  },
+  "generated_at": "2026-09-01T02:46:58",
+  "turns": 3
+}

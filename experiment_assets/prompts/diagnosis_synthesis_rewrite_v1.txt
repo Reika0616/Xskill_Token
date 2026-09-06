@@ -1,0 +1,130 @@
+You are performing the final synthesis stage of a Skill optimization experiment.
+
+You will receive:
+1. The original baseline Skill S0.
+2. Three independent diagnosis reports: A, B, and C.
+3. Each diagnosis was produced by comparing multiple semantically correct trajectories from ONE executor only.
+
+Your task is to consolidate the evidence and produce ONE revised Skill S1.
+
+The final Skill should improve the task-execution policy induced by S0.
+The optimization objective itself must NOT appear inside the rewritten Skill.
+
+EVIDENCE RULES
+
+1. Give highest priority to hypotheses independently supported by multiple executor diagnoses.
+
+2. A single-executor hypothesis may be adopted only when:
+   - the within-executor contrast is strong,
+   - the Skill anchor is explicit,
+   - the proposed change is low-risk,
+   - and no other diagnosis provides contradictory evidence.
+
+3. Do NOT imitate a trajectory merely because it is shorter.
+
+4. Do NOT convert executor-specific capabilities into Skill requirements.
+
+5. Reject recommendations that are not grounded in a specific S0 instruction, omission, ambiguity, ordering rule, or stopping rule.
+
+6. When diagnoses conflict, preserve correctness and resolve the underlying ambiguity conservatively rather than blindly selecting the cheaper behavior.
+
+7. Evidence from rejected or unsupported hypotheses in the diagnosis reports must not silently re-enter the rewrite.
+
+REWRITE RULES
+
+A. Preserve the scope and generality of S0.
+
+B. Do not overfit to the specific task used to generate the trajectories.
+
+C. Never include task-specific values, answers, entities, percentages, invoice values, or examples observed in the trajectories.
+
+D. The final Skill must NOT mention:
+- token usage
+- execution cost
+- efficiency
+- minimizing tool calls
+- reducing reasoning
+- avoiding unnecessary steps
+- trajectories
+- executor models
+- this optimization experiment
+
+E. Translate accepted diagnoses into concrete operational policies.
+
+BAD:
+"Be efficient and avoid repeated verification."
+
+GOOD:
+"Once a required value has been resolved clearly, retain and reuse it. Reinspect the source only when the value remains ambiguous or conflicts with another observation."
+
+F. Prefer replacement, deletion, merging, tightening, and reordering of existing instructions over appending new instructions.
+
+G. Preserve important correctness, grounding, calculation, and verification safeguards.
+
+H. Do not modify parts of S0 for which the diagnosis reports provide no evidence unless required to maintain consistency after an accepted edit.
+
+I. Produce a coherent FULL REWRITE, not a patch list.
+
+J. S1 must not be longer than S0.
+Prefer modest compression where redundant or overlapping instructions can be merged, but do not sacrifice required behavior merely to shorten the text.
+
+SYNTHESIS PROCEDURE
+
+Step 1 — Consolidate the three diagnosis reports.
+
+For every proposed hypothesis identify:
+- supporting diagnoses
+- conflicting diagnoses
+- S0 anchor
+- evidence strength
+- correctness risk
+- decision: ACCEPT / REJECT / MERGE
+
+Step 2 — Build a minimal rewrite plan.
+
+For each affected region of S0 decide whether it should be:
+- preserved
+- tightened
+- merged
+- replaced
+- removed
+
+Step 3 — Rewrite S0 into S1.
+
+OUTPUT FORMAT
+
+## A. Evidence Consolidation
+
+For each hypothesis:
+- source diagnosis/diagnoses
+- S0 anchor
+- support
+- conflicts
+- risk
+- decision
+
+## B. Accepted Changes
+
+For each accepted change:
+- source evidence
+- S0 anchor
+- behavioral policy to encode
+- correctness safeguard
+
+## C. Rejected Changes
+
+List unsupported, conflicting, model-specific, or overly risky recommendations.
+
+## D. Rewrite Plan
+
+Brief region-by-region plan.
+
+## E. Revised Skill S1
+
+Return the complete revised Skill inside exactly:
+
+<REVISED_SKILL>
+...
+</REVISED_SKILL>
+
+Do not place experimental analysis, token information, model identities, or optimization objectives inside <REVISED_SKILL>.

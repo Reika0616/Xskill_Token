@@ -1,0 +1,59 @@
+{
+  "created_at_utc": "2026-08-31T18:15:07.962915+00:00",
+  "category": "finance",
+  "input_split": "/home/cxy/XSkill/benchmark/VisualToolBench/pilot_split/finance/skill_init_30.json",
+  "number_of_examples": 30,
+  "example_doc_ids": [
+    "6883f999d3f384b2a9a3e632",
+    "68757ac94c044bac23c9bde2",
+    "6883f999d3f384b2a9a3e633",
+    "68757ac94c044bac23c9bdf1",
+    "68757ac94c044bac23c9bdab",
+    "68757ac94c044bac23c9bde5",
+    "68757ac94c044bac23c9bde0",
+    "68757ac94c044bac23c9bdcd",
+    "68757ac94c044bac23c9bde3",
+    "6883f999d3f384b2a9a3e61e",
+    "68658a711603983919432617",
+    "6883f999d3f384b2a9a3e62c",
+    "68757ac94c044bac23c9bdec",
+    "68757ac94c044bac23c9bde7",
+    "6883f999d3f384b2a9a3e624",
+    "68757ac94c044bac23c9bded",
+    "68757ac94c044bac23c9bdce",
+    "68658a711603983919432616",
+    "68757ac94c044bac23c9bde8",
+    "68757ac94c044bac23c9bdbf",
+    "6883f999d3f384b2a9a3e62e",
+    "68757ac94c044bac23c9bdc4",
+    "68757ac94c044bac23c9bdaa",
+    "68757ac94c044bac23c9bdf0",
+    "6883f999d3f384b2a9a3e60e",
+    "68757ac94c044bac23c9bdb2",
+    "68757ac94c044bac23c9bdd8",
+    "68757ac94c044bac23c9bdc2",
+    "68757ac94c044bac23c9bdee",
+    "6870357d15624e798bfc83ad"
+  ],
+  "optimizer_model": "claude-opus-5",
+  "optimizer_gateway": "https://api.uniapi.io/v1",
+  "optimizer_api_mode": "responses",
+  "returned_model": "claude-opus-5",
+  "response_id": "msg_011CeaoamPTG94qBJXen8X3M",
+  "usage": {
+    "input_tokens": 17032,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0
+    },
+    "output_tokens": 8000,
+    "output_tokens_details": {
+      "reasoning_tokens": 6800
+    },
+    "total_tokens": 25032,
+    "compute_units": null
+  },
+  "skill_sha256": "8304ecfbff22da4be8bb54605a9c99de234af05264e5cf51444ec0ba5314abd1",
+  "request_snapshot": "/home/cxy/XSkill/experiment_assets/skills/finance/S0_initial.request.txt",
+  "output_file": "/home/cxy/XSkill/experiment_assets/skills/finance/S0_initial.md"
+}

@@ -1,0 +1,29 @@
+{
+  "task_id": "6870357d15624e798bfc83af",
+  "model": "gpt-5",
+  "provider": "openai",
+  "skill_id": "original",
+  "skill_path": "experiment_assets/skills/finance/S0_initial.md",
+  "accuracy_score": 0.0,
+  "trajectory_score": 0.0,
+  "final_answer": "Error: Reached max image limit.",
+  "usage": {
+    "input_tokens": 72954,
+    "output_tokens": 6498,
+    "reasoning_tokens": 4608,
+    "cached_tokens": 8704
+  },
+  "behavior": {
+    "model_calls": 8,
+    "tool_calls": 8,
+    "retries": 0
+  },
+  "artifacts": {
+    "trajectory": "outputs/tstar_S0_gpt5_extra3/6870357d15624e798bfc83af/rollout_0/traj.jsonl",
+    "system_prompt": "outputs/tstar_S0_gpt5_extra3/6870357d15624e798bfc83af/rollout_0/injected_system_prompt.txt",
+    "api_usage": "outputs/tstar_S0_gpt5_extra3/6870357d15624e798bfc83af/rollout_0/api_usage.jsonl",
+    "cost_summary": "outputs/tstar_S0_gpt5_extra3/6870357d15624e798bfc83af/rollout_0/cost_summary.json"
+  },
+  "generated_at": "2026-09-01T21:11:32",
+  "turns": 8
+}
